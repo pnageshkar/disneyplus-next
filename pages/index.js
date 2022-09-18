@@ -4,10 +4,11 @@ import Image from 'next/image'
 import Brands from '../components/Brands'
 import Header from '../components/Header'
 import LandingPage from '../components/LandingPage'
+import MovieCollection from '../components/MovieCollection'
 import Slider from '../components/Slider'
 
 
-export default function Home() {
+export default function Home({movieList}) {
   const {data:session} = useSession();
   return (
     <div className="">
@@ -20,9 +21,13 @@ export default function Home() {
       {
         !session ? (<LandingPage/>) :
         (
-          <main>
+          <main className="relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]">
             <Slider className="" />
             <Brands />
+            <MovieCollection category="recommend" movlist={movieList} />
+            <MovieCollection category="new" movlist={movieList} />
+            <MovieCollection category="original" movlist={movieList} />
+            <MovieCollection category="trending" movlist={movieList} />
           </main>
         )
 
@@ -36,11 +41,11 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
-
-  const session = await getSession(context);
+  let url = process.env.HOST + '/api/movies'
+  const movieList = await(await fetch(url)).json()
   return {
     props: {
-      session,
+      movieList,
     },
   }
 }

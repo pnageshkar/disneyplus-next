@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Brands() {
   return (
-    <section className="flex flex-col md:flex-row justify-center items-center mt-10 gap-6 px-8 max-w-[1400px] mx-auto">
+    <section className="flex flex-col md:flex-row justify-center items-center mt-10 gap-6 w-11/12  max-w-screen-2xl mx-auto">
       <div className="brand group">
         <Image src="/images/disnep.png" layout="fill" objectFit="cover" />
         <video

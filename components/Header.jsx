@@ -6,12 +6,11 @@ import {
   StarIcon
 } from '@heroicons/react/24/solid';
 import { signIn, signOut, useSession } from "next-auth/react";
-import {useRouter} from "next/router";
+
 
 function Header() {
   const { data: session } = useSession();
-  const router = useRouter();
-  return (
+   return (
     <header className="sticky  bg-[#131A28] top-0 h-[4.5rem] px-6 z-[1000] flex items-center justify-between  md:px-10">
       <Image
         src="/images/logo.svg"
@@ -21,7 +20,7 @@ function Header() {
         onClick={() => router.push("/")}
       />
       { session && (
-        <div className="hidden ml-4 md:flex items-center space-x-4">
+        <div className="hidden ml-4 mt-2 md:flex items-center space-x-4">
           <a className="header-link group">
             <HomeIcon className="h-4" />
             <span className="span">Home</span>
@@ -55,6 +54,7 @@ function Header() {
       ) : (
         <img
           src={session.user.image}
+          alt="sign out"
           className="ml-auto h-10 w-10 rounded-full object-cover cursor-pointer"
           onClick={signOut}
         />
