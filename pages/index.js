@@ -5,7 +5,7 @@ import Brands from '../components/Brands'
 import Header from '../components/Header'
 import LandingPage from '../components/LandingPage'
 import MovieCollection from '../components/MovieCollection'
-import Slider from '../components/Slider'
+import Banner from '../components/Banner'
 
 
 export default function Home({movieList}) {
@@ -22,7 +22,7 @@ export default function Home({movieList}) {
         !session ? (<LandingPage/>) :
         (
           <main className="relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]">
-            <Slider className="" />
+            <Banner className="" />
             <Brands />
             <MovieCollection category="recommend" movlist={movieList} />
             <MovieCollection category="new" movlist={movieList} />
